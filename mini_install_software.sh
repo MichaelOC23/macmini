@@ -7,7 +7,7 @@ echo "Each step is laid out below:"
 
 show_menu() {
     echo -e "Part 1: Install Homebrew Python 3 and Git\n"
-    echo -e "Part 3: Install environment variables using the code-admin scripts\n"
+    echo -e "Part 2: Install environment variables using the code-admin scripts\n"
     echo -e "Part 4: Install Business Applications\n"
     echo -e "Part 5: Install Development Applications\n"
 }
@@ -81,8 +81,7 @@ read_choice() {
         option1
         ;;
 
-   
-    3)
+    2)
         option3() {
             echo "You chose Option 3:"
             echo "This will install Dashlane CLI"
@@ -94,13 +93,10 @@ read_choice() {
             #Dashlane CLI
             brew install dashlane/tap/dashlane-cli
 
-
-
-
         }
         option3
         ;;
-    4)
+    3)
         option4() {
             echp "You chose Option 3:"
             echo "This will install environment variables using the code-admin scripts."
