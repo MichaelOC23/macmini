@@ -7,8 +7,6 @@ echo "Each step is laid out below:"
 
 show_menu() {
     echo -e "Part 1: Install Homebrew Python 3 and Git\n"
-    echo -e "Part 2: Create a DMG folder and disk image\n"
-    echo -e "Part 3: Install Azure CLI\n"
     echo -e "Part 3: Install environment variables using the code-admin scripts\n"
     echo -e "Part 4: Install Business Applications\n"
     echo -e "Part 5: Install Development Applications\n"
@@ -83,39 +81,21 @@ read_choice() {
         option1
         ;;
 
-    2)
-        option2() {
-
-            #Ask the user how big to make the data dmg, but suggest 200GB.
-            hdiutil create -size 300g -fs APFS -volname "data" -encryption AES-256 -stdinpass -attach ~/dmg/code.dmg
-            #Use homebrew to install mkcert:
-            # brew install mkcert
-            # brew install nss
-        }
-        option2
-        ;;
+   
     3)
         option3() {
             echo "You chose Option 3:"
-            echo "This will install Azure CLI and Dashlane CLI"
+            echo "This will install Dashlane CLI"
 
             #Install Rosetta
             echo "Installing Rosetta .... this could take a while ... please be patient."
             softwareupdate --install-rosetta
 
-            brew install azure-cli
-            az login
-            az extension add --name azure-devops
-            az devops configure --defaults organization=https://dev.azure.com/outercircles
-            git config --global init.defaultBranch main
-            git config pull.rebase false
-
             #Dashlane CLI
             brew install dashlane/tap/dashlane-cli
 
-            mkdir -p "${HOME}/code"
-            cd "${HOME}/code"
-            continuous_integration.sh
+
+
 
         }
         option3
@@ -125,7 +105,6 @@ read_choice() {
             echp "You chose Option 3:"
             echo "This will install environment variables using the code-admin scripts."
             echo "This will also add the code-admin scripts to your PATH"
-            VSCODE_FOLDER_PATH="${HOME}/code/vscode/"
             echo -e "source ${HOME}/.jbi/env_variables.sh" >>~/.zshrc
             echo -e "source ${HOME}/.jbi/env_variables.sh" >>~/.bashrc
         }
@@ -133,35 +112,35 @@ read_choice() {
         ;;
     5)
         option5() {
-            echo "You chose Option 4:"
-            echo "This will install Business Applications"
+            # echo "You chose Option 4:"
+            # echo "This will install Business Applications"
 
-            #Business Apps
+            # #Business Apps
             brew install --cask microsoft-office
             brew install --cask microsoft-teams
-            brew install --cask dropbox
+            # brew install --cask dropbox
 
-            #Browsers
+            # #Browsers
             brew install --cask microsoft-edge
             brew install --cask google-chrome
-            brew install --cask firefox
-            brew install --cask arc
+            # brew install --cask firefox
+            # brew install --cask arc
 
-            #Design
+            # #Design
             # brew install --cask figma
-            # brew install --cask adobe-creative-cloud
+            # # brew install --cask adobe-creative-cloud
 
-            #Communication Apps
-            # brew install --cask slack
+            # #Communication Apps
+            # # brew install --cask slack
             brew install --cask zoom
-            # brew install --cask signal
-            # brew install --cask whatsapp
+            # # brew install --cask signal
+            # # brew install --cask whatsapp
 
-            #Music
-            # brew install --cask spotify
+            # #Music
+            # # brew install --cask spotify
 
-            #Security
-            brew install 1password-cli
+            # #Security
+            # brew install 1password-cli
 
             echo#
 
@@ -173,9 +152,6 @@ read_choice() {
         option6() {
             #Xcode Command Line Tools
             xcode-select --install
-
-            #Install Docker
-            brew install docker
 
             #Install Github
             brew install github
@@ -200,22 +176,21 @@ read_choice() {
             brew install openai-whisper
 
             #Install Postgres and pgadmin4
-            brew install postgresql
-            brew services start postgresql
-            brew services stop postgresql #(if needed)
-            brew install --cask pgadmin4
+            # brew install postgresql
+            # brew services start postgresql
+            # brew services stop postgresql #(if needed)
+            # brew install --cask pgadmin4
 
             #Development
-            brew install jupyterlab
-            python3 -m ipykernel install --user
-            brew install --cask db-browser-for-sqlite
+            # brew install jupyterlab
+            # python3 -m ipykernel install --user
+            # brew install --cask db-browser-for-sqlite
             brew install --cask dbeaver-community
             brew install --cask sublime-text
-            brew install --cask postman
             brew install --cask docker
 
             #Communify
-            brew install nats-server
+            # brew install nats-server
 
             #Image OCR
             brew install tesseract
