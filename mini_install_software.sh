@@ -8,8 +8,8 @@ echo "Each step is laid out below:"
 show_menu() {
     echo -e "Part 1: Install Homebrew Python 3 and Git\n"
     echo -e "Part 2: Install environment variables using the code-admin scripts\n"
-    echo -e "Part 4: Install Business Applications\n"
-    echo -e "Part 5: Install Development Applications\n"
+    echo -e "Part 3: Install  Applications\n"
+
 }
 
 # Function to read the user's choice
@@ -103,11 +103,7 @@ read_choice() {
             echo "This will also add the code-admin scripts to your PATH"
             echo -e "source ${HOME}/.jbi/env_variables.sh" >>~/.zshrc
             echo -e "source ${HOME}/.jbi/env_variables.sh" >>~/.bashrc
-        }
-        option4
-        ;;
-    5)
-        option5() {
+
             # echo "You chose Option 4:"
             # echo "This will install Business Applications"
 
@@ -140,12 +136,6 @@ read_choice() {
 
             echo#
 
-        }
-        option5
-        ;;
-
-    6)
-        option6() {
             #Xcode Command Line Tools
             xcode-select --install
 
@@ -194,7 +184,7 @@ read_choice() {
             #Audio Recording
             brew install portaudio
         }
-        option6
+        option4
         ;;
 
     *)
