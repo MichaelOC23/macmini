@@ -21,8 +21,11 @@ else
     echo -e "\033[1;34m > jq (JSON Parser) command is: \033[3;32m ** Present **.  \033[0m"
 fi
 
-SECRET_TITLES=""
+# Define the paths to the .env files
+env_file1="${HOME}/code/mytech/.env"
+env_file2="${HOME}/.jbi/.env"
 
+SECRET_TITLES=""
 # Loop through each entry in the JSON array
 echo "$json_string" | jq -c '.[]' | while read -r i; do
     # Extract title and content
@@ -32,10 +35,15 @@ echo "$json_string" | jq -c '.[]' | while read -r i; do
     # Export them as environment variables
     export "${title}=${content}"
 
-    #Concatenate the titles of the secets into the SECRET_TITLES variable
-    SECRET_TITLES="${SECRET_TITLES} ${title}"
-
+    # Append to SECRET_TITLES
+    SECRET_TITLES="${SECRET_TITLES}\n${title}=${content}"
 done
+
+# Write SECRET_TITLES and all secrets to the .env file
+echo -e "SECRET_TITLES=${SECRET_TITLES}" >"$env_file1"
+echo -e "SECRET_TITLES=${SECRET_TITLES}" >"$env_file2"
+
+echo -e "\033[0;34m > Updated .env files at \033[0;32m ${env_file1} \033[0m and \033[0;32m ${env_file2} \033[0m"
 
 #Check if $SHOW_ME exists and is set to 123456. if so echo a green message else a red message
 if [ -n "${SHOW_ME}" ] && [ "${SHOW_ME}" = "123456" ]; then
