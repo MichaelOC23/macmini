@@ -24,6 +24,8 @@ fi
 # Define the paths to the .env files
 env_file1="${HOME}/code/mytech/.env"
 env_file2="${HOME}/.jbi/.env"
+env_file1="${HOME}/code/Docker/.env"
+env_file1="${HOME}/code/Docker/.env"
 
 SECRET_TITLES=""
 # Loop through each entry in the JSON array
@@ -41,6 +43,8 @@ done
 
 # Write SECRET_TITLES and all secrets to the .env file
 echo -e "SECRET_TITLES=${SECRET_TITLES}" >"$env_file1"
+echo -e "SECRET_TITLES=${SECRET_TITLES}" >"$env_file2"
+echo -e "SECRET_TITLES=${SECRET_TITLES}" >"$env_file2"
 echo -e "SECRET_TITLES=${SECRET_TITLES}" >"$env_file2"
 
 echo -e "\033[0;34m > Updated .env files at \033[0;32m ${env_file1} \033[0m and \033[0;32m ${env_file2} \033[0m"
